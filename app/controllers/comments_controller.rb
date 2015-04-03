@@ -25,18 +25,12 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    if @comment == nil
-      user = User.find_by(name: params[:user_name])
-      if user == nil
-        user = User.new(name: params[:user_name])
-        user.save
-      end
-      @comment = user.comments.build(content: params[:content])
-    end
+    user = User.find(params[:comment][:user_id])
+    @comment = user.comments.build(content: params[:comment][:content])
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to user, notice: 'Comment added' }
+        format.html { redirect_to  user, notice: 'Comment added' }
         format.json { render action 'show', status: created, location: comment }
       else
         format.html { render action: 'new' }
