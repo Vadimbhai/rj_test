@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <%= @user.name %>'s page.
+</h1>
+
+<%= form_for @comment, :action => 'create' do |f| %>
+    <div>
+      <%= f.label 'New comment:' %>
+      <%= f.text_area :content %>
+    </div>
+
+    <div>
+      <%= f.submit 'Send' %>
+    </div>
+<% end %>
+
+<p>
+  <h3><%= @user.name %>'s comments:</h3>
+  <% @user.comments.each do |comment| %>
+    <p><%= comment.content %></p>
+    <hr />
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

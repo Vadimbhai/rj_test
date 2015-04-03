@@ -1,0 +1,18 @@
+<h1>Post#index</h1>
+<%= form_tag :action => 'create' do %>
+    <fieldset>
+      <div>
+        <%= label_tag :user_name, 'User name:' %>
+        <%= text_field_tag :user_name, params[:user_name] %>
+      </div>
+
+      <div>
+        <%= label_tag :content, 'Comment:' %>
+        <%= text_area_tag :content, params[:content], rows: 5 %>
+      </div>
+
+      <div>
+        <%= submit_tag "Send" %>
+      </div>
+    </fieldset>
+<% end %>

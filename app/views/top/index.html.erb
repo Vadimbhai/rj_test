@@ -1,0 +1,9 @@
+<h1>Top of active users</h1>
+<ol>
+  <% @users.each do |user| %>
+  <li>
+    <a href="<%= user_path(id: user.id) %>"><%= user.name %></a> with <%= user.comments.count %> comments.
+  </li>
+  <% end %>
+</ol>
+
