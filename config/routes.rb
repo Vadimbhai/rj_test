@@ -1,17 +1,12 @@
 Rails.application.routes.draw do
-  get 'top/index'
-
-  get 'post/index'
-  post 'post/create'
+  get 'top10', to: 'top#index'
+  get '/', to: 'comments#new'
+  post '/', to: 'comments#create'
 
   resources :users
+  #resources :comments
 
-  get 'top10', to: 'top#index'
-
-  resources :comments
-
-
-  root to: 'post#index', as: 'post'
+  root to: 'comments#new', as: 'comments'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

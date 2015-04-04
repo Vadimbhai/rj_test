@@ -1,5 +1,5 @@
 <h1>Add comment</h1>
-<%= form_tag :action => 'create' do %>
+<%= form_for @comment, :action => 'create' do |f| %>
     <fieldset>
       <div>
         <%= label_tag :user_name, 'User name:' %>
@@ -7,12 +7,12 @@
       </div>
 
       <div>
-        <%= label_tag :content, 'Comment:' %>
-        <%= text_area_tag :content, params[:content], rows: 5 %>
+        <%= f.label :content, 'Comment:' %>
+        <%= f.text_area :content %>
       </div>
 
       <div>
-        <%= submit_tag "Send" %>
+        <%= f.submit "Send" %>
       </div>
     </fieldset>
 <% end %>

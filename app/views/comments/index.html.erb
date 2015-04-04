@@ -14,7 +14,7 @@
   <tbody>
     <% @comments.each do |comment| %>
       <tr>
-        <td><%= comment.user %></td>
+        <td></td>
         <td><%= comment.content %></td>
         <td><%= link_to 'Show', comment %></td>
         <td><%= link_to 'Edit', edit_comment_path(comment) %></td>

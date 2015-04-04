@@ -25,7 +25,16 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    user = User.find(params[:comment][:user_id])
+    if params.has_key?(:user_name)
+      user = User.find_by(name: params[:user_name])
+      if user == nil
+        user = User.new(name: params[:user_name])
+        user.save
+      end
+    else
+      user = User.find(params[:comment][:user_id])
+    end
+
     @comment = user.comments.build(content: params[:comment][:content])
 
     respond_to do |format|
