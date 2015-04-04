@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = Comment.new
+    @comment = Comment.new()
   end
 
   # GET /comments/1/edit
@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
         user.save
       end
     else
-      user = User.find(params[:comment][:user_id])
+      user = User.find(params[:comment][:user_attributes][:id])
     end
 
     @comment = user.comments.build(content: params[:comment][:content])

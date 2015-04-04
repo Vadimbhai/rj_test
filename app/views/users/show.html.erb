@@ -11,18 +11,16 @@
     </div>
 
     <div>
-      <%= f.hidden_field :user_id %>
+      <%= f.fields_for :user do |ff| %>
+        <%= f.hidden_field :id %>
+      <% end %>
       <%= f.submit 'Send' %>
     </div>
 <% end %>
 
 <p>
   <h3><%= @user.name %>'s comments:</h3>
-  <% @user.comments.each do |comment| %>
-    <p style="font-weight: bold">At <%= comment.created_at %>:</p>
-    <p><%= comment.content %></p>
-    <hr />
-  <% end %>
+  <%= render @user.comments %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

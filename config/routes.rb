@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'top10', to: 'top#index'
+  get 'top:count', to: 'top#index'
   get '/', to: 'comments#new'
   post '/', to: 'comments#create'
 
