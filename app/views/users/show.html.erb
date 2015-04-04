@@ -4,7 +4,7 @@
   <%= @user.name %>'s page.
 </h1>
 
-<%= form_for @comment, :action => 'create' do |f| %>
+<%= form_for @comment, remote: true, :action => 'create' do |f| %>
     <div>
       <%= f.label 'New comment:' %>
       <%= f.text_area :content %>
@@ -19,8 +19,10 @@
 <% end %>
 
 <p>
-  <h3><%= @user.name %>'s comments:</h3>
+<h3><%= @user.name %>'s comments:</h3>
+<div id="comments">
   <%= render @user.comments %>
+</div>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

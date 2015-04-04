@@ -1,0 +1,3 @@
+$('div#comments').prepend("<%= escape_javascript render(@comment) %>");
+$('#comment_content').val("");
+$('#notice').html("Comment added by AJAX").fadeIn(200).delay( 2000 ).fadeOut( 400 );
