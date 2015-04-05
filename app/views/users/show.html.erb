@@ -21,7 +21,7 @@
 <p>
 <h3><%= @user.name %>'s comments:</h3>
 <div id="comments">
-  <%= render @user.comments %>
+  <%= render @user.comments.reverse_order %>
 </div>
 </p>
 
