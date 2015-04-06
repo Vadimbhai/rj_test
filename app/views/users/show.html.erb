@@ -7,7 +7,7 @@
 <%= form_for @comment, remote: true, :action => 'create' do |f| %>
     <div>
       <%= f.label 'New comment:' %>
-      <%= f.text_area :content %>
+      <%= f.text_area :content, validate: { presence: true } %>
     </div>
 
     <div>
