@@ -1,4 +1,4 @@
 $('div#comments').prepend("<%= escape_javascript render(@comment) %>");
 $('div#comments').children().first().css({'background-color':'#ffff88'}).animate({'background-color':'#ffffff'}, 1000);
 $('#comment_content').val("");
-$('#notice').html("Comment added by AJAX").fadeIn(200).delay( 2000 ).fadeOut( 400 );
+$('#comment_content').focus();
