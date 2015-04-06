@@ -3,15 +3,15 @@ class CommentsController < ApplicationController
 
   # GET /comments
   # GET /comments.json
-  def index
-    @comments = Comment.all
-  end
+  #def index
+  #
+  #end
 
   # GET /comments/1
   # GET /comments/1.json
-  def show
-    #@user = User.find(@comment.user_id)
-  end
+  #def show
+  #  #@user = User.find(@comment.user_id)
+  #end
 
   # GET /comments/new
   def new
@@ -19,8 +19,8 @@ class CommentsController < ApplicationController
   end
 
   # GET /comments/1/edit
-  def edit
-  end
+  #def edit
+  #end
 
   # POST /comments
   # POST /comments.json
@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
     @comment = user.comments.build(content: params[:comment][:content])
 
     respond_to do |format|
-      if @comment.save
+      if user.save
         format.html { redirect_to  user, notice: 'Comment added' }
         format.js   {}
         format.json { render action 'show', status: created, location: comment }

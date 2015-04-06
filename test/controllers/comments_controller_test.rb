@@ -2,33 +2,42 @@ require 'test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
   setup do
-    @comment = comments(:one)
+    @user = users(:petr)
+    @comment = @user.comments.build(content: "Test text")
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:comments)
-  end
+  #test "should not get index" do
+  #  get :index
+  #  assert_response :redirect
+  #end
 
   test "should get new" do
     get :new
-    assert_response :success
+    assert_select '#user_name', 1
+    assert_select '#comment_content', 1
   end
 
   test "should create comment" do
     assert_difference('Comment.count') do
-      post :create, comment: { content: @comment.content, user: @comment.user }
+      post :create, {'comment' => {'content' => @comment.content}, 'user_name' => @user.name}
     end
 
-    assert_redirected_to comment_path(assigns(:comment))
+    assert_redirected_to user_path(@user)
   end
 
-  test "should destroy comment" do
-    assert_difference('Comment.count', -1) do
-      delete :destroy, id: @comment
+  test "should create comment with AJAX" do
+    assert_difference('Comment.count') do
+      xhr :post, :create, {'comment' => {'content' => @comment.content, 'user_attributes' => {'id' => @user.id}}}
     end
 
-    assert_redirected_to comments_path
+    assert_response :success
   end
+
+  #test "should destroy comment" do
+  #  assert_difference('Comment.count', -1) do
+  #    delete :destroy, id: @comment
+  #  end
+  #
+  #  assert_redirected_to comments_path
+  #end
 end

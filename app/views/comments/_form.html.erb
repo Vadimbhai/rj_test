@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= label_tag :user_name, "User name:" %><br>
-    <%= text_field_tag :user_name, params[:user_name] %>
+    <%= text_field_tag :user_name, params[:user_name], :placeholder => 'user name' %>
   </div>
   <div class="field">
     <%= f.label :content %><br>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, :placeholder => 'comment\'s content'%>
   </div>
   <div class="actions">
     <%= f.submit %>
